@@ -33,3 +33,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # Add more files here
 from application import db
 from application import commands
+from application import location
