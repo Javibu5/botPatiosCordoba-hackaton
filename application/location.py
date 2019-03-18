@@ -10,8 +10,8 @@ def handle_location(message):
 	longitude = message.location.longitude
 	nombre, imagen = patio_cercano(latitude, longitude)
 	bot.reply_to(message, "El patio más cercano está en " + nombre)
-	#bot.reply_to(message, desc)
-	bot.reply_to(message, imagen)
+	#bot.reply_to(message, imagen)
+	bot.send_photo(chat_id=message.chat.id, photo=imagen)
 
 def distance(lat1, long1, lat2, long2):
 	dist = math.sqrt((lat1-lat2)**2 + (long1-long2)**2)
@@ -38,7 +38,6 @@ def patio_cercano(mylatitude, mylongitude):
 
 		if distance(latitude, longitude, mylatitude, mylongitude) < distanciaMinima:
 			nombre = parsed['pois'][x]['nombre']
-			#desc = parsed['pois'][x]['descripcion']
 			imagen = parsed['pois'][x]['imagen']
 			distanciaMinima = distance(latitude, longitude, mylatitude, mylongitude)
 
